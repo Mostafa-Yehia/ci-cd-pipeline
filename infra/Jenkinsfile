@@ -4,7 +4,7 @@ pipeline {
         stage('infra init') {
             steps {
                 sh 'cd infra'
-                sh 'terraform init'
+                sh 'terraform init -reconfigure'
                 sh 'terraform workspace new dev'
                 sh 'terraform workspace select dev'
                 sh 'terraform apply --var-file dev.tfvars -auto-approve'
