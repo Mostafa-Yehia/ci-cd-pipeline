@@ -58,3 +58,7 @@ variable private_subnet_one {
 variable private_subnet_two {
     type = string
 }
+
+variable my_secret {
+    type = string
+}
