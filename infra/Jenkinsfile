@@ -3,7 +3,9 @@ pipeline {
     stages {
         stage('infra init') {
             steps {
-                sh 'cd infra'
+                dir('infra') {
+                    sh "pwd"
+                }
                 sh 'terraform init -reconfigure'
                 sh 'terraform workspace new dev'
                 sh 'terraform workspace select dev'
