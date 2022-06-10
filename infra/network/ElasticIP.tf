@@ -4,6 +4,3 @@ resource "aws_eip" "eip1" {
     Name = "eip1"
   }
 }
-
-ip = 45.6.3.7
-pool_index = 55
