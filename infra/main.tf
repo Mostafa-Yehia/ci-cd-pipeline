@@ -14,3 +14,9 @@ module "network" {
     private_subnet_one = var.private_subnet_one
     private_subnet_two = var.private_subnet_two
 }
+
+module "vars" {
+    source = "./vars"
+    bucket = 
+    key    = 
+}

@@ -59,6 +59,10 @@ variable private_subnet_two {
     type = string
 }
 
-variable my_secret {
+variable bucket {
+    type = string
+}
+
+variable key {
     type = string
 }

@@ -12,4 +12,6 @@ public_subnet_one = "public_subnet_one"
 public_subnet_two = "public_subnet_two"
 private_subnet_one = "private_subnet_one"
 private_subnet_two = "private_subnet_two"
-password = my_secret
+
+bucket = "secret-vars"
+key = "secrets.txt"
