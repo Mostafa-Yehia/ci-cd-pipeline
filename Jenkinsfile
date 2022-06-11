@@ -12,7 +12,7 @@ pipeline {
                         sh 'terraform init -reconfigure'
                         sh 'terraform apply --var-file dev.tfvars -auto-approve'
                         script {
-                            ec2pubip = sh(returnStdout: true, script: "terraform output -raw ec2pubip").trim()
+                            ec2pubip = sh(returnStdout: true, script: "terraform output -raw ec2pubip")
                             ec2rvip = sh(returnStdout: true, script: "terraform output -raw ec2prvip").trim()
                             sh 'echo this is the public ip: ${ec2pubip}'
                             sh 'echo this is the private ip: ${ec2rvip}'
