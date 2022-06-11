@@ -3,26 +3,14 @@ pipeline {
         label 'master'
     }
     stages {
-        stage('infra init') {
+        stage('IaC: terraform') {
             steps {
                 withAWS(credentials:'aws-credentials') {
                     dir('infra') {
                         sh 'terraform init -reconfigure'
-                        //sh 'terraform workspace new dev 2> /dev/null'
-                        //sh 'terraform workspace select dev'
                         sh 'terraform apply --var-file dev.tfvars -auto-approve'
-                    }
-                }
-            }
-        }
-        stage('gathering outputs') {
-            steps {
-                withAWS(credentials:'aws-credentials') {
-                    dir('infra') {
-                        sh 'terraform state pull'
-                        sh 'terraform state list'                        
-                        sh 'terraform state show aws_instance.ec2a | grep public_ip | grep -oP \'".*?"\' | tr -d \'"\''
-                        //sh 'terraform state show aws_instance.ec2b.private_ip'                        
+                        sh 'terraform output ec2pubip'
+                        sh 'terraform output ec2rvip'
                     }
                 }
             }
