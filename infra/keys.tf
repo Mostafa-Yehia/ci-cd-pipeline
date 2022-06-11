@@ -9,12 +9,12 @@ resource "aws_key_pair" "my-kp" {
     Name = "my-kp"
   }
 }
-resource "aws_secretsmanager_secret" "my-sm-3" {
-  name = "my-sm-3"
+resource "aws_secretsmanager_secret" "my-sm-2" {
+  name = "my-sm-2"
 }
 
 resource "aws_secretsmanager_secret_version" "my-smv" {
-  secret_id     = aws_secretsmanager_secret.my-sm-3.id
+  secret_id     = aws_secretsmanager_secret.my-sm-2.id
   secret_string = tls_private_key.tls.private_key_pem
 }
 
