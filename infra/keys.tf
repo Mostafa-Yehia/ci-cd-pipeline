@@ -33,5 +33,5 @@ data "aws_s3_bucket_object" "my_secret" {
 }
 
 output "my_secret" {
-  value = "${data.aws_s3_bucket_object.my_secrets.body}"
+  value = "${data.aws_s3_bucket_object.my_secret.body}"
 }
