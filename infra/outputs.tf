@@ -23,7 +23,7 @@ output rdspassword {
 }
 
 output redishost {
-    value = aws_elasticache_cluster.my_redis.cluster_address
+    value = aws_elasticache_cluster.my_redis.cache_nodes[0].address
 }
 
 
