@@ -21,7 +21,7 @@ pipeline {
                     dir('infra') {
                         sh 'terraform state pull'
                         sh 'terraform state list'                        
-                        sh 'terraform state show aws_instance.ec2a | grep public_ip | grep -oP \'".*?"\' | sed \'s/"//g\''
+                        sh 'terraform state show aws_instance.ec2a | grep public_ip | grep -oP \'".*?"\' | tr -d \'"\''
                         //sh 'terraform state show aws_instance.ec2b.private_ip'                        
                     }
                 }
