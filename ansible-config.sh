@@ -31,15 +31,24 @@ tee /var/jenkins_home/ansible/bootstrap.yml <<EOF
         state: present
           
     - name: creating user jenkins & adding them to docker group
-        user:
-          name: jenkins
-          shell: /bin/bash
-          groups: docker
-          append: yes
+      user:
+        name: jenkins
+        shell: /bin/bash
+        groups: docker
+        append: yes
           
     - name: starting ssh service
-        service:
-          name: ssh
-          state: started
+      service:
+        name: ssh
+        state: started
+          
+    - name: Download jenkins agent.jar file
+      get_url:
+        url: $1
+        dest: /home/jenkins/agent.jar
+        mode: '0440'
+        
+    - name: executing agent.jar file
+      command: java -jar /home/jenkins/agent.jar
 
 EOF
