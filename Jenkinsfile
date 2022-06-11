@@ -23,7 +23,7 @@ pipeline {
                             rdshost = sh(returnStdout: true, script: "terraform output -raw rdshost").trim()
                             rdsport = sh(returnStdout: true, script: "terraform output -raw rdsport").trim()
                             rdsusername = sh(returnStdout: true, script: "terraform output -raw rdsusername").trim()
-                            rdspassword = sh(returnStdout: false, script: "terraform output -raw rdspassword").trim()
+                            rdspassword = sh(returnStdout: true, script: "terraform output -raw rdspassword").trim()
                             redishost = sh(returnStdout: true, script: "terraform output -raw redishost").trim()
                             redisport = sh(returnStdout: true, script: "terraform output -raw redisport").trim()
                         }
@@ -32,7 +32,7 @@ pipeline {
                         sh "echo this is the rds host: ${rdshost}"
                         sh "echo this is the rds port: ${rdsport}"
                         sh "echo this is the rds username: ${rdsusername}"
-                        //sh "echo this is the rds rds password: ${rdspassword}"
+                        sh "echo this is the rds rds password: ${rdspassword}"
                         sh "echo this is the redis host: ${redishost}"
                         sh "echo this is the redis port: ${redisport}"
                     }
