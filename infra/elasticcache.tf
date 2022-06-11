@@ -41,5 +41,5 @@ resource "aws_elasticache_user" "my_elasticcache_user" {
   user_name     = "admin"
   access_string = "on ~app::* -@all +@read +@hash +@bitmap +@geo -setbit -bitfield -hset -hsetnx -hmset -hincrby -hincrbyfloat -hdel -bitop -geoadd -georadius -georadiusbymember"
   engine        = "REDIS"
-  passwords     = [var.password]
+  passwords     = [module.vars.my_secret]
 }
