@@ -26,12 +26,3 @@ resource "local_file" "private_key" {
   filename = "~/private.pem"
 }
 
-
-data "aws_s3_bucket_object" "my_secret" {
-  bucket = "secret_vars"
-  key    = "secrets.txt"
-}
-
-output "my_secret" {
-  value = "${data.aws_s3_bucket_object.my_secret.body}"
-}
