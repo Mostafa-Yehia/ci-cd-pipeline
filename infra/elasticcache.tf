@@ -32,7 +32,7 @@ resource "aws_security_group" "my_elasticcache_secgrp" {
 }
 
 resource "aws_elasticache_subnet_group" "my_elasticcache_subgrp" {
-  name       = "my_elasticcache_subgrp"
+  name       = "my-elasticcache-subgrp"
   subnet_ids = [module.network.private_subnet_one_id,module.network.private_subnet_two_id]
 }
 
