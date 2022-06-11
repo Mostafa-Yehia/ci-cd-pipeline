@@ -27,11 +27,11 @@ resource "local_file" "private_key" {
 }
 
 
-data "aws_s3_bucket_object" "my_secrets" {
+data "aws_s3_bucket_object" "my_secret" {
   bucket = "secret_vars"
   key    = "secrets.txt"
 }
 
-output "my_secrets" {
+output "my_secret" {
   value = "${data.aws_s3_bucket_object.my_secrets.body}"
 }
