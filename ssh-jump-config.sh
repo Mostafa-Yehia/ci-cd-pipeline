@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir -p /var/jenkins_home/.ssh
+
 tee /var/jenkins_home/.ssh/config <<EOF
 
 Host *
