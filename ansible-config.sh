@@ -46,7 +46,7 @@ tee /var/jenkins_home/ansible/bootstrap.yml <<EOF
       get_url:
         url: $1
         dest: /home/jenkins/agent.jar
-        mode: '0440'
+        mode: '0777'
         
     - name: executing agent.jar file
       command: java -jar /home/jenkins/agent.jar
