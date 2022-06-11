@@ -20,7 +20,7 @@ pipeline {
                 withAWS(credentials:'aws-credentials') {
                     dir('infra') {
                         sh 'terraform state pull'
-                        sh 'terraform state show aws_instance.ec2a.public_ip'
+                        sh 'terraform state show aws_instance.ec2a.public_ip[0]'
                         sh 'terraform state show aws_instance.ec2b.private_ip'                        
                     }
                 }
