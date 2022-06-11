@@ -6,6 +6,7 @@ def rdsusername
 def rdspassword
 def redishost
 def redisport
+def master_node_ip
 pipeline {
     agent { 
         label 'master'
@@ -60,8 +61,11 @@ pipeline {
         }
         stage('Jenkins-cli: Automating node creation') {
             steps {
-                //sh 'automating node creation code 1: using master_node_ip to download jenkins-cli.jar'
-                //sh 'automating node creation code 2: running xml script and creating new node'
+                //automating node creation code step 1: using master_node_ip to download jenkins-cli.jar
+                sh "./automatic-node-creation1.sh http://${master_node_ip}:8080/jnlpJars/jenkins-cli.jar"
+                sh 'ansible-playbook /var/jenkins_home/ansible/add-node.yml'
+                //automating node creation code step 2: running xml script and creating new node
+                sh "./automatic-node-creation2.sh ${cli-name} ${cli-pass}"
             }
         }
     }
