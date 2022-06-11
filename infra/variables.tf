@@ -38,11 +38,6 @@ variable ami {
     type = string
 }
 
-variable password {
-    type = string
-    description = "this is your db password"
-}
-
 variable public_subnet_one {
     type = string
 }
