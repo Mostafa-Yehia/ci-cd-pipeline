@@ -1,5 +1,7 @@
 pipeline {
-    agent master
+    agent { 
+        label 'master'
+    }
     stages {
         stage('infra init') {
             steps {
