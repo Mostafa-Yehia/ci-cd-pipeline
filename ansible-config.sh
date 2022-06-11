@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir -p /var/jenkins_home/ansible/
+
 tee /var/jenkins_home/ansible/inventory <<EOF
 
 private
