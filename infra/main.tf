@@ -1,3 +1,8 @@
+module "vars" {
+    source = "./vars"
+    bucket = var.bucket
+    key    = var.key
+}
 module "network" {
     source = "./network"
     vpc_cidr = var.vpc_cidr
@@ -13,10 +18,4 @@ module "network" {
     public_subnet_two = var.public_subnet_two
     private_subnet_one = var.private_subnet_one
     private_subnet_two = var.private_subnet_two
-}
-
-module "vars" {
-    source = "./vars"
-    bucket = var.bucket
-    key    = var.key
 }
