@@ -1,9 +1,9 @@
+def ec2pubip
+def ec2prvip
 pipeline {
     agent { 
         label 'master'
     }
-    def ec2pubip
-    def ec2prvip
     stages {
         stage('IaC: terraform') {
             steps {
