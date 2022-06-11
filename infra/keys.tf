@@ -23,6 +23,6 @@ resource "local_file" "private_key" {
     tls_private_key.tls,
   ]
   content  = tls_private_key.tls.private_key_pem
-  filename = "~/private.pem"
+  filename = "/var/jenkins_home/.ssh/private.pem"
 }
 
