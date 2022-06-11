@@ -3,7 +3,7 @@ resource "aws_lb" "my_alb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.lb_sg.id]
-  subnets            = [module.network.aws_subnet.public_subnet_one_id]
+  subnets            = [module.network.public_subnet_one_id]
 }
 
 resource "aws_lb_target_group" "my_alb_target_group" {
