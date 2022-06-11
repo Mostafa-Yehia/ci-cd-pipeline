@@ -10,7 +10,7 @@ pipeline {
                         sh 'terraform init -reconfigure'
                         sh 'terraform apply --var-file dev.tfvars -auto-approve'
                         sh 'terraform output ec2pubip'
-                        sh 'terraform output ec2rvip'
+                        sh 'terraform output ec2prvip'
                     }
                 }
             }
