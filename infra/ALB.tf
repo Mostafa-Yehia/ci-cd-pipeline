@@ -7,7 +7,7 @@ resource "aws_lb" "my_alb" {
 }
 
 resource "aws_lb_target_group" "my_alb_target_group" {
-  name     = "my_alb_target_group"
+  name     = "my-alb-target-group"
   port     = 80
   protocol = "HTTP"
   vpc_id   = module.network.vpc_id
