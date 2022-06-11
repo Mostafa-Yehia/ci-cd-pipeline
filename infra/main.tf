@@ -17,6 +17,6 @@ module "network" {
 
 module "vars" {
     source = "./vars"
-    bucket = 
-    key    = 
+    bucket = var.bucket
+    key    = var.key
 }
