@@ -2,9 +2,9 @@ pipeline {
     agent { 
         label 'master'
     }
+    def ec2pubip
+    def ec2prvip
     stages {
-        def ec2pubip
-        def ec2prvip
         stage('IaC: terraform') {
             steps {
                 withAWS(credentials:'aws-credentials') {
