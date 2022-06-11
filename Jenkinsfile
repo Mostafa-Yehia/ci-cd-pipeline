@@ -15,8 +15,8 @@ pipeline {
                             ec2pubip = sh(returnStdout: true, script: "terraform output -raw ec2pubip").trim()
                             ec2prvip = sh(returnStdout: true, script: "terraform output -raw ec2prvip").trim()
                         }
-                        sh 'echo this is the public ip: ${ec2pubip}'
-                        sh 'echo this is the private ip: ${ec2prvip}'
+                        sh "echo this is the public ip: ${ec2pubip}"
+                        sh "echo this is the private ip: ${ec2prvip}"
                     }
                 }
             }
