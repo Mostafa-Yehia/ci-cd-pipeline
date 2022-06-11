@@ -49,8 +49,10 @@ tee /var/jenkins_home/ansible/bootstrap.yml <<EOF
         url: $1
         dest: /home/jenkins/agent.jar
         mode: '0777'
+      register: agent
         
     - name: executing agent.jar file
       command: java -jar /home/jenkins/agent.jar
+      when: agent.changed
 
 EOF
