@@ -3,15 +3,7 @@
 cli_name=$1
 cli_pass=$2
 
-set -e
-EXIT_CODE=0
-
-java -jar /var/jenkins_home/jars/jenkins-cli.jar -s http://localhost:8080 -auth ${cli_name}:${cli_pass} get-node private 2> /dev/null | wc -l || EXIT_CODE=$?
-
-echo $EXIT_CODE
-
-
-if [ $error -eq 0 ]
+if [ ! -f /var/jenkins_home/nodes/private ]
 then
 
   cat <<EOF | java -jar /var/jenkins_home/jars/jenkins-cli.jar -s http://localhost:8080 -auth ${cli_name}:${cli_pass} create-node
