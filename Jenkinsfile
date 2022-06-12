@@ -56,6 +56,7 @@ pipeline {
                     sh "./ssh-jump-config.sh ${ec2pubip} ${ec2prvip}"
                     //sh "ansible-playbook ./scripter.yml -e \"data=./ssh-jump-config.sh ${ec2pubip} ${ec2prvip}\""
                 }
+            }
         }
         stage('Ansible: Configuration Management') {
             node('master') {
