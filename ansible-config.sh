@@ -40,6 +40,13 @@ tee /var/jenkins_home/ansible/bootstrap.yml <<EOF
         shell: /bin/bash
         groups: docker
         append: yes
+        
+    - name: adding ubuntu to docker group
+      user:
+        name: ubuntu
+        groups: docker
+        append: yes
+        
           
     - name: starting ssh service
       service:
