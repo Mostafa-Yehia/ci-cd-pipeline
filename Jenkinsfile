@@ -8,8 +8,9 @@ def redishost
 def redisport
 def master_node_ip
 pipeline {
-    node('master') {
-        stages {
+    agent none
+    stages {
+        node('master') {
             stage('Adding execution permission for .sh files') {
                 steps {
                     sh "chmod +x *.sh"
@@ -69,10 +70,8 @@ pipeline {
                 }
             }
         }
-    }
-
-    node('master') {
-        stages {
+    
+        node('master') {
             stage('Git') {
                 steps {
                     git branch: 'rds_redis',
