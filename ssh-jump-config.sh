@@ -29,4 +29,4 @@ Host private
 EOF
 
 grep -qxF "${private}    private" /etc/hosts || echo "${private}    private" >> /etc/hosts
-grep -qxF "${public}    public" /etc/hosts || echo "${public}    public" >> /etc/hosts
+grep -qxF "${public}    bastion" /etc/hosts || echo "${public}    bastion" >> /etc/hosts
