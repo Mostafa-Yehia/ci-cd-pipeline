@@ -12,7 +12,7 @@ cat <<EOF | java -jar /var/jenkins_home/jars/jenkins-cli.jar -s http://localhost
   <mode>EXCLUSIVE</mode>
   <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
   <launcher class="hudson.slaves.CommandLauncher" plugin="command-launcher@84.v4a_97f2027398">
-    <agentCommand>ssh private</agentCommand>
+    <agentCommand>ssh private java -jar /home/jenkins/agent.jar</agentCommand>
   </launcher>
   <label>private</label>
   <nodeProperties>
