@@ -13,7 +13,10 @@ pipeline {
         stage('Adding execution permission for .sh files') {
             steps {
                 node('master') {
+                    sh "echo $PWD"
+                    sh "ls"
                     sh "chmod +x *.sh"
+                    
                 }
             }
         }
