@@ -42,7 +42,7 @@ pipeline {
                         sh "echo this is the rds rds password: ${rdspassword}"
                         sh "echo this is the redis host: ${redishost}"
                         sh "echo this is the redis port: ${redisport}"
-                        sh "current master node ip is: ${master_node_ip}"
+                        sh "echo current master node ip is: ${master_node_ip}"
                     }
                 }
             }
