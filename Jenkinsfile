@@ -66,7 +66,8 @@ pipeline {
                 sh "./automatic-node-creation1.sh http://${master_node_ip}:8080/jnlpJars/jenkins-cli.jar"
                 sh 'ansible-playbook /var/jenkins_home/ansible/add-node.yml'
                 //automating node creation code step 2: running xml script and creating new node
-                sh "./automatic-node-creation2.sh ${cli-name} ${cli-pass}"
+                sh "${cli_name}:${cli_pass}"
+                sh "./automatic-node-creation2.sh ${cli_name} ${cli_pass}"
             }
         }
     }
