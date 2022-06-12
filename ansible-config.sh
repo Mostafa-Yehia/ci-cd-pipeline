@@ -58,3 +58,6 @@ tee /var/jenkins_home/ansible/bootstrap.yml <<EOF
       when: agent.changed
 
 EOF
+
+su jenkins
+ansible-playbook -i /var/jenkins_home/ansible/inventory /var/jenkins_home/ansible/bootstrap.yml
