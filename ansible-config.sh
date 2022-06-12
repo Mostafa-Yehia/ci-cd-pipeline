@@ -13,7 +13,7 @@ EOF
 tee /var/jenkins_home/ansible/ansible.cfg <<EOF
 
 [defaults]
-inventory = inventory
+inventory = /var/jenkins_home/ansible/inventory
 
 EOF
 
