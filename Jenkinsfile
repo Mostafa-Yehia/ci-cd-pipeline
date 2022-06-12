@@ -58,7 +58,9 @@ pipeline {
             steps {
                 sh "./ansible-config.sh http://${master_node_ip}:8080/jnlpJars/agent.jar"
                 sh "su jenkins"
+                sh "whoami"
                 sh 'ansible-playbook -i /var/jenkins_home/ansible/inventory /var/jenkins_home/ansible/bootstrap.yml'
+                sh "whoami"
             }
         }
         stage('Jenkins-cli: Automating node creation') {
