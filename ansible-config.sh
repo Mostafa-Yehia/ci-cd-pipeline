@@ -21,8 +21,6 @@ tee /var/jenkins_home/ansible/bootstrap.yml <<EOF
 
 ---
 - name: bootstrap
-  ansible_user: jenkins
-  become: true
   hosts: private
   tasks:
     - name: updating apt & installing needed packages for jenkins
