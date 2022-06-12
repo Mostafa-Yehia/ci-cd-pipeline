@@ -83,8 +83,8 @@ pipeline {
 
                 sh 'docker build -t mostafaye7ia/nodejs-cicd .'
 
-                withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'pass', usernameVariable: 'user')]) {
-                    sh "docker login -u ${env.user} -p ${env.pass}"
+                withCredentials([usernamePassword(credentialsId: 'docker_credentials', passwordVariable: 'password', usernameVariable: 'username')]) {
+                    sh "docker login -u ${env.username} -p ${env.password}"
                     sh 'docker push mostafaye7ia/nodejs-cicd'
 
                     sh "docker run -p 3000:3000 -e RDS_HOSTNAME=${rdshost} -e RDS_USERNAME=${rdsusername} -e RDS_PASSWORD=${rdspassword} -e RDS_PORT=${rdsport} -e REDIS_HOSTNAME=${redishost} -e REDIS_PORT=${redisport} mostafaye7ia/nodejs-cicd"
