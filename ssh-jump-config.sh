@@ -16,13 +16,13 @@ Host *
 Host bastion
     HostName $1
     User ubuntu
-    IdentityFile ./private.pem
+    IdentityFile /var/jenkins_home/.ssh/private.pem
     AddKeysToAgent yes
 
 Host private
     HostName $2
     User ubuntu
-    IdentityFile ./private.pem
+    IdentityFile /var/jenkins_home/.ssh/private.pem
     ProxyCommand ssh bastion -W %h:%p
 
 EOF
