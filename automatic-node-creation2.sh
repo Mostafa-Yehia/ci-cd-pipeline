@@ -3,7 +3,10 @@
 cli_name=$1
 cli_pass=$2
 
-cat <<EOF | java -jar /var/jenkins_home/jars/jenkins-cli.jar -s http://localhost:8080 -auth ${cli_name}:${cli_pass} create-node
+if [ java -jar /var/jenkins_home/jars/jenkins-cli.jar -s http://localhost:8080 -auth ${cli_name}:${cli_pass} get-node private ]
+then
+
+  cat <<EOF | java -jar /var/jenkins_home/jars/jenkins-cli.jar -s http://localhost:8080 -auth ${cli_name}:${cli_pass} create-node
 <slave>
   <name>private</name>
   <description>automatically added node</description>
@@ -36,3 +39,5 @@ cat <<EOF | java -jar /var/jenkins_home/jars/jenkins-cli.jar -s http://localhost
   </nodeProperties>
 </slave>
 EOF
+
+fi
