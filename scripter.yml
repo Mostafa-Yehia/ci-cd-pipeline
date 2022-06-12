@@ -1,0 +1,7 @@
+---
+- name: runner
+  hosts: localhost
+  become: true
+  tasks:
+    - name: run script
+      command: "{{ data }}"
