@@ -3,7 +3,9 @@
 cli_name=$1
 cli_pass=$2
 
-if [ java -jar /var/jenkins_home/jars/jenkins-cli.jar -s http://localhost:8080 -auth ${cli_name}:${cli_pass} get-node private ]
+`java -jar /var/jenkins_home/jars/jenkins-cli.jar -s http://localhost:8080 -auth ${cli_name}:${cli_pass} get-node private`
+
+if [ $? -eq 3 ]
 then
 
   cat <<EOF | java -jar /var/jenkins_home/jars/jenkins-cli.jar -s http://localhost:8080 -auth ${cli_name}:${cli_pass} create-node
