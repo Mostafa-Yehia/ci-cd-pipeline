@@ -47,6 +47,11 @@ tee /var/jenkins_home/ansible/bootstrap.yml <<EOF
         groups: docker
         append: yes
         
+    - name: Change file permissions
+      file:
+        path: /var/run/docker.sock
+        mode: '0777'
+        
           
     - name: starting ssh service
       service:
