@@ -49,7 +49,7 @@ pipeline {
         }
         stage('SSH: ssh jump configuration') {
             steps {
-                sh "chmod 444 /var/jenkins_home/.ssh/private.pem"
+                sh "chmod 777 /var/jenkins_home/.ssh/private.pem"
                 sh "./ssh-jump-config.sh ${ec2pubip} ${ec2prvip}"
                 //sh "ansible-playbook ./scripter.yml -e \"data=./ssh-jump-config.sh ${ec2pubip} ${ec2prvip}\""
             }
