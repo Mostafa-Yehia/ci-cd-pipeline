@@ -1,5 +1,6 @@
 #!/bin/bash
 
+public=$1
 private=$2
 
 mkdir -p /var/jenkins_home/.ssh/
@@ -28,3 +29,4 @@ Host private
 EOF
 
 grep -qxF "${private}    private" /etc/hosts || echo "${private}    private" >> /etc/hosts
+grep -qxF "${public}    public" /etc/hosts || echo "${public}    public" >> /etc/hosts
