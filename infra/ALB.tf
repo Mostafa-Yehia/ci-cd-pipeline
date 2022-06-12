@@ -17,7 +17,7 @@ resource "aws_lb_target_group" "my_alb_target_group" {
 resource "aws_lb_target_group_attachment" "my_alb_target_group_register" {
   target_group_arn = aws_lb_target_group.my_alb_target_group.arn
   target_id        = aws_instance.ec2b.id
-  port             = 80
+  port             = 3000
 }
 
 
