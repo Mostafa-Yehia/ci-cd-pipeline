@@ -9,7 +9,7 @@ def redisport
 def master_node_ip
 pipeline {
     agent none
-    stages {
+    //stages {
         node('master') {
             stage('Adding execution permission for .sh files') {
                 steps {
@@ -88,5 +88,5 @@ pipeline {
                 }
             }
         }
-    }
+    //}
 }
