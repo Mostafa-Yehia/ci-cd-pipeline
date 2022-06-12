@@ -60,4 +60,5 @@ tee /var/jenkins_home/ansible/bootstrap.yml <<EOF
 EOF
 
 su jenkins
+whoami
 ansible-playbook -i /var/jenkins_home/ansible/inventory /var/jenkins_home/ansible/bootstrap.yml
