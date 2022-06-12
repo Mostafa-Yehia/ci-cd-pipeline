@@ -17,6 +17,7 @@ Host bastion
     HostName $1
     User ubuntu
     IdentityFile private.pem
+    AddKeysToAgent yes
 
 Host private
     HostName $2
