@@ -1,9 +1,9 @@
 #!/bin/bash
 
-cli-name=$1
-cli-pass=$2
+cli_name=$1
+cli_pass=$2
 
-cat <<EOF | java -jar /var/jenkins_home/jars/jenkins-cli.jar -s http://localhost:8080 -auth ${cli-name}:${cli-pass} create-node
+cat <<EOF | java -jar /var/jenkins_home/jars/jenkins-cli.jar -s http://localhost:8080 -auth ${cli_name}:${cli_pass} create-node
 <slave>
   <name>private</name>
   <description>automatically added node</description>
