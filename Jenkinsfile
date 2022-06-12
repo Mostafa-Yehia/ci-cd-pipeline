@@ -86,6 +86,7 @@ pipeline {
                     git branch: 'rds_redis',
                         url: 'https://github.com/Mostafa-Yehia/jenkins_nodejs_example.git'
 
+                    sh 'whoami'
                     sh 'docker build -t mostafaye7ia/nodejs-cicd .'
 
                     withCredentials([usernamePassword(credentialsId: 'docker_credentials', passwordVariable: 'password', usernameVariable: 'username')]) {
