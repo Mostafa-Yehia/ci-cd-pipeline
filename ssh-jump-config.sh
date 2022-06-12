@@ -26,4 +26,4 @@ Host private
 
 EOF
 
-echo "${private}    private"
+echo "${private}    private" >> /etc/hosts
