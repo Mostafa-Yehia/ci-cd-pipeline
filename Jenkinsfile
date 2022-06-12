@@ -16,6 +16,7 @@ pipeline {
                     sh "chmod +x *.sh"
                 }
             }
+        }
         stage('terraform: IaC') {
             node('master') {
                 steps {
@@ -62,6 +63,7 @@ pipeline {
                     sh "./ansible-config.sh http://${master_node_ip}:8080/jnlpJars/agent.jar"
                     sh 'ansible-playbook -i /var/jenkins_home/ansible/inventory /var/jenkins_home/ansible/bootstrap.yml'
                 }
+            }
         }
         stage('Jenkins-cli: Automating node creation') {
             node('master') {
@@ -95,6 +97,3 @@ pipeline {
         }
     }
 }
-            
-                
-            
