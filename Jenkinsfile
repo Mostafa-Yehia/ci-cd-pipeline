@@ -57,6 +57,7 @@ pipeline {
         stage('Ansible: Configuration Management') {
             steps {
                 sh "./ansible-config.sh http://${master_node_ip}:8080/jnlpJars/agent.jar"
+                sh "whoami"
                 sh 'ansible-playbook -i /var/jenkins_home/ansible/inventory /var/jenkins_home/ansible/bootstrap.yml'
             }
         }
