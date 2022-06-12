@@ -1,5 +1,7 @@
 #!/bin/bash
 
+private = $2
+
 mkdir -p /var/jenkins_home/.ssh/
 
 tee /var/jenkins_home/.ssh/config <<EOF
@@ -23,3 +25,5 @@ Host private
     ProxyCommand ssh bastion -W %h:%p
 
 EOF
+
+echo "${private}    private"
