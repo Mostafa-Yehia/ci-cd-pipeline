@@ -21,7 +21,7 @@ tee /var/jenkins_home/ansible/bootstrap.yml <<EOF
 
 ---
 - name: bootstrap
-  remote_user: ubuntu
+  ansible_user: jenkins
   become: true
   hosts: private
   tasks:
