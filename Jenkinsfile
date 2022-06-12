@@ -32,7 +32,7 @@ pipeline {
                             rdspassword = sh(returnStdout: true, script: "terraform output -raw rdspassword").trim()
                             redishost = sh(returnStdout: true, script: "terraform output -raw redishost").trim()
                             redisport = sh(returnStdout: true, script: "terraform output -raw redisport").trim()
-                            //master_node_ip = "hostname -i".execute().text
+                            master_node_ip = sh(returnStdout: true, script: "curl ipinfo.io/ip").trim()
                         }
                         sh "echo this is the public ip: ${ec2pubip}"
                         sh "echo this is the private ip: ${ec2prvip}"
@@ -42,7 +42,7 @@ pipeline {
                         sh "echo this is the rds rds password: ${rdspassword}"
                         sh "echo this is the redis host: ${redishost}"
                         sh "echo this is the redis port: ${redisport}"
-                        //sh "current master node ip is: ${master_node_ip}"
+                        sh "current master node ip is: ${master_node_ip}"
                     }
                 }
             }
