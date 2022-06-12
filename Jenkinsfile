@@ -8,7 +8,7 @@ def redishost
 def redisport
 def master_node_ip
 pipeline {
-    agent any
+    agent master
     stages {
         stage('Adding execution permission for .sh files') {
             steps {
