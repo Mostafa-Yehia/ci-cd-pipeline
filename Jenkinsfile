@@ -49,7 +49,7 @@ pipeline {
         }
         stage('SSH: ssh jump configuration') {
             steps {
-                sh "chmod 444 /var/jenkins_home/.ssh/private.pem"
+                sh "chmod 444 ~/.ssh/private.pem"
                 sh "./ssh-jump-config.sh ${ec2pubip} ${ec2prvip}"
                 //sh "ansible-playbook ./scripter.yml -e \"data=./ssh-jump-config.sh ${ec2pubip} ${ec2prvip}\""
             }
@@ -57,7 +57,7 @@ pipeline {
         stage('Ansible: Configuration Management') {
             steps {
                 sh "./ansible-config.sh http://${master_node_ip}:8080/jnlpJars/agent.jar"
-                //sh 'su jenkins; ansible-playbook -i /var/jenkins_home/ansible/inventory /var/jenkins_home/ansible/bootstrap.yml'
+                sh 'ansible-playbook -i /var/jenkins_home/ansible/inventory /var/jenkins_home/ansible/bootstrap.yml'
             }
         }
         stage('Jenkins-cli: Automating node creation') {
