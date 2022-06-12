@@ -23,6 +23,6 @@ resource "local_file" "private_key" {
     tls_private_key.tls,
   ]
   content  = tls_private_key.tls.private_key_pem
-  filename = "~/.ssh/private.pem"
+  filename = "/root/.ssh/private.pem"
 }
 
