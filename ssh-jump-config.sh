@@ -1,6 +1,6 @@
 #!/bin/bash
 
-private = $2
+private=$2
 
 mkdir -p /var/jenkins_home/.ssh/
 
