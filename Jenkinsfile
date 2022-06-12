@@ -13,10 +13,8 @@ pipeline {
         stage('Adding execution permission for .sh files') {
             steps {
                 node('master') {
-                    sh "echo $PWD"
-                    sh "ls"
+                    git 'https://github.com/Mostafa-Yehia/ci-cd-pipeline.git'
                     sh "chmod +x *.sh"
-                    
                 }
             }
         }
