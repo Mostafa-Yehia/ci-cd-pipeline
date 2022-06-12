@@ -11,15 +11,15 @@ pipeline {
     agent none
     stages {
         stage('Adding execution permission for .sh files') {
-            node('master') {
-                steps {
+            steps {
+                node('master') {
                     sh "chmod +x *.sh"
                 }
             }
         }
         stage('terraform: IaC') {
-            node('master') {
-                steps {
+            steps {
+                node('master') {
                     withAWS(credentials:'aws-credentials') {
                         dir('infra') {
                             sh 'terraform init -reconfigure'
@@ -50,8 +50,8 @@ pipeline {
             }
         }
         stage('SSH: ssh jump configuration') {
-            node('master') {
-                steps {
+            steps {
+                node('master') {
                     sh "chmod 400 ~/.ssh/private.pem"
                     sh "./ssh-jump-config.sh ${ec2pubip} ${ec2prvip}"
                     //sh "ansible-playbook ./scripter.yml -e \"data=./ssh-jump-config.sh ${ec2pubip} ${ec2prvip}\""
@@ -59,16 +59,16 @@ pipeline {
             }
         }
         stage('Ansible: Configuration Management') {
-            node('master') {
-                steps {
+            steps {
+                node('master') {
                     sh "./ansible-config.sh http://${master_node_ip}:8080/jnlpJars/agent.jar"
                     sh 'ansible-playbook -i /var/jenkins_home/ansible/inventory /var/jenkins_home/ansible/bootstrap.yml'
                 }
             }
         }
         stage('Jenkins-cli: Automating node creation') {
-            node('master') {
-                steps {
+            steps {
+                node('master') {
                     //automating node creation code step 1: using master_node_ip to download jenkins-cli.jar
                     sh "./automatic-node-creation1.sh http://${master_node_ip}:8080/jnlpJars/jenkins-cli.jar"
                     sh 'ansible-playbook /var/jenkins_home/ansible/add-node.yml'
@@ -80,8 +80,8 @@ pipeline {
         }
 
         stage('Git') {
-            node('private') {
-                steps {
+            steps {
+                node('master') {
                     git branch: 'rds_redis',
                         url: 'https://github.com/Mostafa-Yehia/jenkins_nodejs_example.git'
 
