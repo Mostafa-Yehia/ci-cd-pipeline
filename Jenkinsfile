@@ -32,7 +32,7 @@ pipeline {
                             rdspassword = sh(returnStdout: true, script: "terraform output -raw rdspassword").trim()
                             redishost = sh(returnStdout: true, script: "terraform output -raw redishost").trim()
                             redisport = sh(returnStdout: true, script: "terraform output -raw redisport").trim()
-                            master_node_ip = "hostname -i".execute().text
+                            //master_node_ip = "hostname -i".execute().text
                         }
                         sh "echo this is the public ip: ${ec2pubip}"
                         sh "echo this is the private ip: ${ec2prvip}"
@@ -42,16 +42,16 @@ pipeline {
                         sh "echo this is the rds rds password: ${rdspassword}"
                         sh "echo this is the redis host: ${redishost}"
                         sh "echo this is the redis port: ${redisport}"
-                        sh "current master node ip is: ${master_node_ip}"
+                        //sh "current master node ip is: ${master_node_ip}"
                     }
                 }
             }
         }
         stage('SSH: ssh jump configuration') {
             steps {
-                //sh "chmod 400 /var/jenkins_home/.ssh/private.pem"
-                //sh "./ssh-jump-config.sh ${ec2pubip} ${ec2prvip}"
-                sh "ansible-playbook ./scripter.yml -e \"data=./ssh-jump-config.sh ${ec2pubip} ${ec2prvip}\""
+                sh "chmod 400 /var/jenkins_home/.ssh/private.pem"
+                sh "./ssh-jump-config.sh ${ec2pubip} ${ec2prvip}"
+                //sh "ansible-playbook ./scripter.yml -e \"data=./ssh-jump-config.sh ${ec2pubip} ${ec2prvip}\""
             }
         }
         stage('Ansible: Configuration Management') {
