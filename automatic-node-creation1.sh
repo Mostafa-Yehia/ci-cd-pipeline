@@ -11,7 +11,7 @@ then
 - name: bootstrap
   become: true
   hosts: localhost
-  task:
+  tasks:
     - name: Download jenkins-cli.jar file
       get_url:
         url: $1
