@@ -26,4 +26,4 @@ Host private
 
 EOF
 
-echo "${private}    private" >> /etc/hosts
+grep -qxF "${private}    private" /etc/hosts || echo "${private}    private" >> /etc/hosts
