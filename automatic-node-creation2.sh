@@ -5,7 +5,7 @@ cli_pass=$2
 
 error=`java -jar /var/jenkins_home/jars/jenkins-cli.jar -s http://localhost:8080 -auth ${cli_name}:${cli_pass} get-node private 2> /dev/null | wc -l`
 
-echo $error
+echo "error code: ${error}"
 
 if [ $error -eq 0 ]
 then
