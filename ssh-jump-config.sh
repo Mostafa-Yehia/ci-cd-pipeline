@@ -3,9 +3,9 @@
 public=$1
 private=$2
 
-mkdir -p /var/jenkins_home/.ssh/
+mkdir -p ~/.ssh/
 
-tee /var/jenkins_home/.ssh/config <<EOF
+tee ~/.ssh/config <<EOF
 
 Host *
     Port 22
@@ -17,13 +17,13 @@ Host *
 Host bastion
     HostName $1
     User ubuntu
-    IdentityFile /var/jenkins_home/.ssh/private.pem
+    IdentityFile ~/.ssh/private.pem
     AddKeysToAgent yes
 
 Host private
     HostName $2
     User ubuntu
-    IdentityFile /var/jenkins_home/.ssh/private.pem
+    IdentityFile ~/.ssh/private.pem
     ProxyCommand ssh bastion -W %h:%p
 
 EOF
